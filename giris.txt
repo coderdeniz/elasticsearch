@@ -1,0 +1,26 @@
+
+Elasticsearch nedir? 
+-> open source bir search engine'dir.
+-> java diliyle geliþtirilmiþtir.
+-> diðer db'lerden güçlü yaný full-text search olmasýdýr yani text'ler üzerinde arama performansý diðerlerinden daha yüksektir.
+örnek senaryo: word dosyalarýnýn atýldýðý bir sistemde aranan key'e göre dökümanlarý search edip önüne getirmesi..
+-> nosql db'dir. json kullanýr.
+-> diðer nosql'e göre arama özelliðine odakladýr.
+-> Apache Lucene isimli search engine altyapýsýný kullanýyor bu sayede search'i çok performanslý. Apache Lucene altyapý, elasticsearch app diyebiliriz.
+-> hacimli datalarda arama yapmak için kullanýlýr.
+-> sahibinden'deki araba arama kýsmý gibi milyonlarca data içinde kolayca arama yapmak için kullanýlýr.
+-> nosql olduðu için iliþkisel bir yapý yoktur. datalar json olarak kaydediliyor datalar arasý iliþki yoktur. Yani bir kategori silinirken onun ürünleri silinmez.
+-> arama gücünü index'lemeden saðlýyor. Normal sql db'lerdede en çok aranan sütun index'lenir performans artar, elastic'te ise her data tek tek index'leniyor bu yüzden arama performansý çok yüksektir.
+
+
+elastic search yetenekleri
+-> structured ve unstructured datalarda arama yapabilir. (fiyat tarih gibi yapýlar structured'dir, text dosyasý üzerinde arama yapmasý, haber datasý üzerinde arama yapmasý full text search worddosyasýnda arama yapmasý unstructured'dir.)
+-> arama yaptýktan sonra en iliþkiliden en iliþkisize doðru gider.
+-> "þunu mu denemek istediniz" yapabiliriz.
+-> hatalý/eksik aramalarda iyileþtirme yapabiliyor. (megne, kitp gibi)
+-> belli bir coðrafi lokasyonda aranan þeyi bulurken (kare þeklinde belirlenmiþ 4 enlem ve boylam deðeri içerisindeki datalarda arama yapabiliriz)
+-> yatayda ölçeklenebilir
+-> hýzlý arama ve hýzlý indexleme
+
+
+
