@@ -34,6 +34,52 @@ Beats: datalarý toplama iþlemini gören component, fileBeat, dosyadan loglarý alý
 
 
 
+Elasticsearch Mimarisi:
+
+Document: Elastic searche eklenen data documenttir. Elasticsearch json datayý okur ve onu kendi özel data tiplerine dönüþtürür.
+
+Index: Bir konuyla alakalý dökümanlarýn bulunduðu gruba index denir. Sql db'deki tablolar gibi ya da noSql'deki Collection gibi, Product indexi
+
+Indexleme: datayý kaydetmek demek, datayý analiz eder ve indexler. amaç datayý sorgularken hýzlý þekilde getirebilmesi için. Diðer db'lerden farklý olarak elasticsearch datayý analiz eder ve daha mantýklý indexler.
+
+DataStream: Zaman temelli data, her gün için bir index tablosu mesala loglar için index tablolarý örnek: log-1.12-12-2023 ve log-1.12-13-2023 ve microservice-1.logs-data-stream
+takma isim verilebilir. Birde fazla index dosyalarýný tutabilmek için alias. Loglarda genelde yapýlýr.
+
+Cluster: birden fazla sanal sunucuda ayaða kaldýrýlan (node) yapýya cluster denir.
+
+Shard: asýl datayý tutan componentlerdir. örnek product.json. Her node'da bir shard vardýr. Hangi node'daki sharda gideceðini biz de belirleyebiliriz.
+
+Index: Farklý shardda tutulan datalarýn tamamý index oluyor tablo gibi. Örnek shard-1 3 data, shard-2 5 data, shard-3 8 data toplam index 16 data gibi
+
+Replicate: Shardlarýn tam kopyasýdýr. Readonly'dir. Sistem çökmesi durumunda hizmet verir. Shard ile replicate farklý node'larda olmalý.
+
+High availability: Sistemde sýkýntý meydana geldiðinde yavaþlama olur ama çalýþmaya devam eder.
+
+Fault tolerans: Yüksek olduðu zaman sistem kendini onarýr ve yavaþlama olmaz. Ama maliyet getirir.
+
+Text analyzing: data elastice kaydedilmeden önce analizden geçiyor ondan sonra kaydediliyor. Analizdeki amaç indexlemedir.
+
+Tokenization: gelen datayý parçalarý boþluklara göre ayýrýyor. 
+
+Normalization: parçalara ayrýlan datanýn zenginleþtirilmesi, mesala sýcaktý kelimesinden sýcak kelimesi alýnýr. Covid kelimesinden korona alýnmasý gibi. Bu datalar
+inverted index'e kaydedilir. Bunlar için pluginler var
+
+Segment: Shardlara gelen datalar segment denen kýsýmlara kaydediliyor.
+
+Inverted Index Tablolarý: Tokenization ve normalization süreçlerinden geçen data index denen tablolara kaydediliyor. Her textin hangi sharpta olduðunu yerini belirtir. Ýçindekiler kýsmý gibi. Inverted Index'te hangi dökümanlarda ne kadar sýklýðý geçtiði tutuyor. Sýralamada ilk baþta en yüksek frekanslý (cümle içerisinde ne kadar geçiyorsa) olanlar baþta duruyor.
+
+Relevancy(alaka): Ýliþki skor deðeridir. Aranan kelime ile o kelimenin ne kadar iliþkili olduðunu gösterir. BM25 algoritmasýna göre skor deðeri üretilir ona göre en alakalý sonuçlar döner. Text temelli datalarda iþe yarar.
+
+
+--------------
+
+
+Elasticsearch Setup 
+
+
+
+
+
 
 
 
