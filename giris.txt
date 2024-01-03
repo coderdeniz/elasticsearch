@@ -76,9 +76,36 @@ Relevancy(alaka): Ýliþki skor deðeridir. Aranan kelime ile o kelimenin ne kadar 
 
 Elasticsearch Setup 
 
+docker-hub: elasticsearch arama yap.
+docker-hub: kibana arama yap. (kibana node js ile yazýlmýþ web ui'dir.) elasticsearchü kibana üzerinden ya da api'lerle eriþebiliriz.
+
+docker-compose.yml : local'de birden fazla container'i tek bir dosyada ayaða kaldýrmaya yarar.
+
+ -> image: en güncel versiyon belirtilir.
+ -> environment: user pass bilgileri içerir
+ -> expose: image'in kendi portu yazýlýr
+ -> ports: image'a biz hangi porttan baðlanacaksak belirtiriz.
+ -> networks: docker tarafýnda birden fazla türde network tipi vardýr. bridge ile iki farklý container'in haberleþmesini saðlýyoruz.
+ -> volumes: image içerisindeki datalarýn kaydedileceði yer. container restart edilirken uçmamasý için. (elasticsearch-data:/usr/share/elasticsearch/data sað taraftaki kaydedilen alanlarý sol taraftaki kendi oluþturduðumuz dosyaya ekle.)
 
 
+cmd (docker-compose.yml dosya yolu içerisindeyken): docker-compose up 
 
+docker içerisinde birden fazla containeri kapsayan bir yapý oluþacak (2/2)
+
+test: localhost:9200 elastice gitmek için ayaða kalkmasý biraz yavaþ gerçekleþiyor. site açýldýðýnda çalýþýyorsa json data gelmeli.
+test: localhost:5601/app/home*/ kibana için
+
+cmd (containeri kapatmak için, dosya yolu içerisindeyken): docker-compose stop
+
+cmd (containeri silmek için, dosya yolu içerisindeyken): docker-compose down
+
+
+Kibana UI:
+ ->  Explore linkine týkla
+ ->  sol menü management tool elastic searche buradan istek atabiliriz
+ ->  alternatif olarak postmanden de istek atabiliriz
+ ->  analytics discover ile görsel olarak da sorgulayabiliriz
 
 
 
