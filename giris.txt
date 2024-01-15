@@ -109,5 +109,41 @@ Kibana UI:
 
 
 
+ --------------------------
+
+
+ Identifiers:
+  -> put ile id verilip gönderilirse, daha önce yoksa insert varsa update yapar.
+  -> _doc yerine _create kullanarak, daha önce veri varsa exception dönecek.
+  -> post ile id verilmeden veri ekleyebilir id'sini elasticsearch verir.
+
+ 
+
+ Indexleme nasýl meydana geldi:
+ -> Indexleme, data kaydetmedir.
+ -> Memoriye gelen data segment'lere ordan da file system'e geçer.
+ -> data memoride default olarak 1 saniye durur ordan sonra yoðunluða göre segmente geçer.
+ -> datayý anlýk sorgulanabilen yapmak istiyorsak put products/_doc/20?refresh=true
+ -> belli bir süre vermek istiyorsak ?refresh=wait_for
+
+ 
+ Updating Documents 
+ -> post products/_update/1
+   {
+        "doc" : {}
+   }
+ -> update yaparken yanlýþ id verirsek hata alýrýz.
+
+
+ Deleting Documents
+ -> delete products/_doc/2 
+ -> id'si verilen data silinir.
+
+
+ HEAD 
+ -> data var mý yok mu kontrol edebiliyoruz datayý dönmüyor. (varsa 200 yoksa 404 döner)
+ -> HEAD products/_doc/1
+
+
 
 
